@@ -74,12 +74,12 @@ const Form = () => {
 
     if (isValid) {
       window.localStorage.setItem('userInfo', JSON.stringify(formValues));
-      navigate('../SelectionPage.jsx');
+      navigate('../SelectionPage');
     }
   };
 
   return (
-    <div>
+    <div style={style.body}>
       <h1>Super app</h1>
       <h3>Create your new account</h3>
 
@@ -137,9 +137,9 @@ const Form = () => {
           SIGN UP
         </button>
 
-        <p className={style.terms} style={{ top: '580px' }}>By clicking on Sign up. You agree to Superapp Terms and Conditions of Use</p>
+        <p className={style.terms} style={{ top: '580px' }}>By clicking on Sign up. You agree to Superapp <span style={{ color: "green" }}> Terms and Conditions of Use</span></p>
 
-        <p className={style.terms} style={{ top: '630px' }}>To learn more about how Superapp collects, uses, shares and protects your personal data please head Superapp Privacy Policy</p>
+        <p className={style.terms} style={{ top: '630px' }}>To learn more about how Superapp collects, uses, shares and protects your personal data please head Superapp  <span style={{ color: "green" }}> Privacy Policy</span></p>
       </form>
     </div>
   );
