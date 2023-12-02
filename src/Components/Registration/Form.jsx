@@ -74,7 +74,7 @@ const Form = () => {
 
     if (isValid) {
       window.localStorage.setItem('userInfo', JSON.stringify(formValues));
-      navigate('');
+      navigate('../SelectionPage.jsx');
     }
   };
 
