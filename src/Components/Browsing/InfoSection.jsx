@@ -26,9 +26,9 @@ const InfoSection = () => {
         />
       </div>
       <div style={{ display: "flex", flexDirection: "column", columnGap: "0px" }}>
-        <p style={{ color: "white", fontSize: "2rem", margin: "5px 0"}}>{info.name}</p>
-        <p style={{ color: "white", fontSize: "2rem", margin: "5px 0" }}>{info.email}</p>
-        <p style={{ color: "white", fontSize: "3rem", margin: "5px 0" }}>{info.username}</p>
+        <p style={{ color: "white", fontSize: "2rem", margin: "5px 40px"}}>{info.name}</p>
+        <p style={{ color: "white", fontSize: "2rem", margin: "5px 40px" }}>{info.email}</p>
+        <p style={{ color: "white", fontSize: "3rem", margin: "5px 40px" }}>{info.username}</p>
         <Chips categories={genre} color={"#9F94FF"} />
       </div>
     </div>
@@ -50,6 +50,7 @@ const Chips = ({ color, categories }) => {
             height: "30px",
             flexShrink: 0,
             margin: "10px",
+            marginLeft: "35px"
           }}
         >
           {category}{" "}
