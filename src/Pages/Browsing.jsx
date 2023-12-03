@@ -1,4 +1,6 @@
-import Info from "../components/Browsing/InfoSection";
+import Info from "../Components/Browsing/InfoSection";
+import NewsSection from "../Components/Browsing/NewsSection"
+import WeatherSection from "../Components/Browsing/WeatherSection"
 import { useNavigate } from "react-router-dom";
 const Browse = () => {
   const navigate = useNavigate();
@@ -19,6 +21,12 @@ const Browse = () => {
       <div style={{ display: "flex", gap: "20px" }}>
         <div>
           <Info />
+        </div>
+        <div>
+          <NewsSection />
+        </div>
+        <div>
+          <WeatherSection/>
         </div>
         
       </div>

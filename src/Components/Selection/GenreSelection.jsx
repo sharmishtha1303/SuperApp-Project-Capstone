@@ -14,11 +14,7 @@ import Chips from "../../Global/Chips";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-// Array containing GenreSelection information like id, color, and image
 const GenreSelections = [
-  // Each GenreSelection has an id, color, and an image element
-  // Image is a React element containing an img tag with specific styling
-  // Colors are in hexadecimal format
   {
     id: "Action",
     color: "#FF5209",
@@ -69,42 +65,32 @@ const GenreSelections = [
 
 
 ];
-// Functional component for the GenreSelection selection page
 const GenreSelection = () => {
-  // State to manage selected categories and an error state for category length
   const [categories, setCategories] = useState([]);
   const [lengthError, setLengthError] = useState(false);
-  // Navigation hook for moving to the next page
   const navigate = useNavigate();
-  // Function to handle sign-up button click
   const handlenextButton = () => {
-    // Check if at least 3 categories are selected, show error if not
-    // If 3 or more categories are selected, save to local storage and navigate to the next page
     if (categories.length < 3) {
       setLengthError(true);
       return;
     } else {
       setLengthError(false);
       window.localStorage.setItem("GenreSelections", JSON.stringify([...categories]));
-      navigate("/browse");
+      navigate("/Browsing");
     }
   };
 
-  // Render the GenreSelection selection page
   return (
     <div className={Styles.body}>
-      {/* Left side containing app heading, subheading, and category selection */}
       <div className={Styles.left}>
         <p className={Styles.heading}>Super app</p>
         <p className={Styles.subHeading}>Choose your entertainment category</p>
         <div style={{ marginTop: "10vh" }}>
-          {/* Component to display and manage selected categories as chips */}
           <Chips
             categories={categories}
             color={"green"}
             setCategories={setCategories}
           />
-          {/* Show error message if category length is less than 3 */}
           {lengthError ? (
             <p className={Styles.error}><img src={warning} alt="Warning Icon" style={{ width: "20px", height: "20px", marginRight: "5px" }} />Minimum 3 category required</p>
           ) : (
@@ -112,9 +98,7 @@ const GenreSelection = () => {
           )}
         </div>
       </div>
-      {/* Right side containing GenreSelection blocks */}
       <div className={Styles.right}>
-        {/* Map through GenreSelections and render a Block component for each GenreSelection */}
         {GenreSelections.map((data, idx) => (
           <Block
             data={data}
@@ -124,10 +108,11 @@ const GenreSelection = () => {
           />
         ))}
       </div>
-      {/* Button to navigate to the next page */}
+      {location.pathname === "/GenreSelection" && (
       <button className={Styles.nextButton} onClick={handlenextButton}>
         Next Page
       </button>
+      )}
     </div>
   );
 };
