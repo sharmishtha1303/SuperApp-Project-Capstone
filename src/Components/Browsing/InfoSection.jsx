@@ -5,8 +5,8 @@ const InfoSection = () => {
   return (
     <div
       style={{
-        width: "35vw",
-        Height: "10px",
+        width: "33vw",
+        Height: "5px",
         background: "#5746EA",
         borderRadius: "12px",
         padding: "6px",
@@ -18,17 +18,18 @@ const InfoSection = () => {
         <img
           src={Profile}
           style={{
-            height: "32vh",
-            width: "10vw",
+            height: "25vh",
+            width: "7vw",
             position: "relative",
             top: "2vh",
+            marginLeft: "10px"
           }}
         />
       </div>
       <div style={{ display: "flex", flexDirection: "column", columnGap: "0px" }}>
-        <p style={{ color: "white", fontSize: "2rem", margin: "5px 40px"}}>{info.name}</p>
-        <p style={{ color: "white", fontSize: "2rem", margin: "5px 40px" }}>{info.email}</p>
-        <p style={{ color: "white", fontSize: "3rem", margin: "5px 40px" }}>{info.username}</p>
+        <p style={{ color: "white", fontSize: "18px", margin: "5px 40px", marginTop: "20px"}}>{info.name}</p>
+        <p style={{ color: "white", fontSize: "18px", margin: "5px 40px", marginTop:"0px" }}>{info.email}</p>
+        <p style={{ color: "white", fontSize: "3rem", margin: "5px 40px", marginTop: "-10px"}}>{info.username}</p>
         <Chips categories={genre} color={"#9F94FF"} />
       </div>
     </div>
@@ -49,8 +50,8 @@ const Chips = ({ color, categories }) => {
             padding: "6px",
             height: "30px",
             flexShrink: 0,
-            margin: "10px",
-            marginLeft: "35px"
+            margin: "5px",
+            marginLeft: "45px"
           }}
         >
           {category}{" "}

@@ -26,7 +26,7 @@ const WeatherCondition = () => {
     const date = new Date();
     var hours = date.getHours();
     var minutes = date.getMinutes();
-    var ampm = hours >= 12 ? "pm" : "am";
+    var ampm = hours >= 12 ? "PM" : "AM";
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
     minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -51,16 +51,18 @@ const WeatherCondition = () => {
   return (
     <div
       style={{
-        width: "36vw",
+        font: "Roboto",
+        width: "34vw",
         minHeight: "22vh",
         background: "#101744",
         borderRadius: "12px",
-        marginTop: "20px",
+        marginTop: "30px",
       }}
     >
       {/* Date and time display */}
       <div
         style={{
+          font : "Roboto",
           height: "7vh",
           background: "#FF4ADE",
           borderRadius: "12px",

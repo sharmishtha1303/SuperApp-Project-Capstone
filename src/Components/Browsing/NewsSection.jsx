@@ -53,7 +53,7 @@ const NewsSection = () => {
     <div
       style={{
         height: "90vh",
-        width: "0vw",
+        width: "40vw",
         position: "relative",
         borderRadius: "12px",
         padding: "6px",
@@ -63,14 +63,14 @@ const NewsSection = () => {
       {/* Display news image */}
       <img
         src={news.urlToImage}
-        style={{ height: "60vh", borderRadius: "12px", width: "25vw" }}
+        style={{ height: "60vh", borderRadius: "12px", width: "28vw" }}
       />
       {/* Display news description */}
       <div
         style={{
-          height: "25vh",
+          height: "24vh",
           borderRadius: "12px",
-          width: "25vw",
+          width: "27vw",
           background: "white",
           fontSize: "1.5rem",
           padding: "6px",
@@ -82,7 +82,7 @@ const NewsSection = () => {
       <div
         style={{
           position: "absolute",
-          width: "25vw",
+          width: "28vw",
           height: "30vh",
           background: "rgba(0, 0, 0, 0.74)",
           top: "31vh",

@@ -19,7 +19,7 @@ const NoteSection = () => {
       style={{
         color: "white",
         background: "#F1C75B",
-        height: "61vh",
+        height: "54vh",
         width: "27vw",
         position: "relative",
         borderRadius: "12px",

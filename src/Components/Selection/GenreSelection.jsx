@@ -108,11 +108,9 @@ const GenreSelection = () => {
           />
         ))}
       </div>
-      {location.pathname === "/GenreSelection" && (
       <button className={Styles.nextButton} onClick={handlenextButton}>
         Next Page
       </button>
-      )}
     </div>
   );
 };
@@ -156,7 +154,6 @@ const Block = ({ data, idx, setCategories, categories }) => {
         marginBottom: "10px"
       }}
     >
-      {/* Display GenreSelection name and image inside the block */}
       <p style={{ margin: "0 0 20px", fontSize: "22px", fontFamily: "DM Sans"}}>{data.id}</p>
       {data.image}
     </div>

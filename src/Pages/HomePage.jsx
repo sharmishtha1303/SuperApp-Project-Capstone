@@ -26,11 +26,12 @@ const Browse = () => {
       }}
     >
       {/* Main content area with flex layout */}
-      <div style={{ display: "flex", gap: "20px" }}>
+      <div style={{ display: "flex", gap: "30px", paddingTop: "15px"}}>
         {/* Left section with Info and Weather components */}
         <div>
           <InfoSection />
           <WeatherSection />
+          <TimerSection />
         </div>
 
         {/* Middle section with NoteSection component */}
@@ -53,8 +54,10 @@ const Browse = () => {
           background: "green",
           border: "none",
           color: "white",
-          padding: "6px",
+          padding: "px",
           borderRadius: "12px",
+          width: "120px",
+          height: "32px",
         }}
         onClick={handleClick}
       >
