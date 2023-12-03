@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 
 const NewsSection = () => {
+  // State to store news data
   const [news, setNews] = useState("");
+  
+  // State to store current date and time
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+
   console.log(news);
+
+  // Fetch news data from the News API on component mount
   useEffect(() => {
     const fetchNews = async () => {
       await fetch(
@@ -15,6 +21,8 @@ const NewsSection = () => {
     };
     fetchNews();
   }, []);
+
+  // Update time using useEffect
   useEffect(() => {
     const date = new Date();
     var hours = date.getHours();
@@ -26,6 +34,8 @@ const NewsSection = () => {
     var strTime = hours + ":" + minutes + " " + ampm;
     setTime(strTime);
   });
+
+  // Update date using useEffect
   useEffect(() => {
     const today = new Date();
     const yyyy = today.getFullYear();
@@ -38,6 +48,7 @@ const NewsSection = () => {
     const formattedToday = dd + "-" + mm + "-" + yyyy;
     setDate(formattedToday);
   });
+
   return (
     <div
       style={{
@@ -49,10 +60,12 @@ const NewsSection = () => {
         marginLeft: "100px",
       }}
     >
+      {/* Display news image */}
       <img
         src={news.urlToImage}
         style={{ height: "60vh", borderRadius: "12px", width: "30vw" }}
       />
+      {/* Display news description */}
       <div
         style={{
           height: "25vh",
@@ -65,6 +78,7 @@ const NewsSection = () => {
       >
         {news.description}
       </div>
+      {/* Display detailed news information with title, date, and time */}
       <div
         style={{
           position: "absolute",

@@ -26,6 +26,9 @@ const Browse = () => {
           <InfoSection />
           <WeatherSection />
         </div>
+      <div>
+        <NewsSection/>
+      </div>
       </div>
       <button
         style={{
