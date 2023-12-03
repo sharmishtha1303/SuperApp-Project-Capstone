@@ -1,7 +1,10 @@
 import Info from "../Components/Browsing/InfoSection";
 import NewsSection from "../Components/Browsing/NewsSection"
 import WeatherSection from "../Components/Browsing/WeatherSection"
+import NoteSection from "../Components/Browsing/NoteSection"
+import TimerSection from "../Components/Browsing/TimerSection"
 import { useNavigate } from "react-router-dom";
+import InfoSection from "../Components/Browsing/InfoSection";
 const Browse = () => {
   const navigate = useNavigate();
   const handleClick = () => {
@@ -19,16 +22,10 @@ const Browse = () => {
       }}
     >
       <div style={{ display: "flex", gap: "20px" }}>
-        <div>
-          <Info />
+      <div>
+          <InfoSection />
+          <WeatherSection />
         </div>
-        <div>
-          <NewsSection />
-        </div>
-        <div>
-          <WeatherSection/>
-        </div>
-        
       </div>
       <button
         style={{
@@ -43,7 +40,7 @@ const Browse = () => {
         }}
         onClick={handleClick}
       >
-        Next Page
+        Brows
       </button>
     </div>
   );
