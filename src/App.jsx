@@ -1,7 +1,7 @@
 import React from "react";
 import RegistrationPage from "./Pages/RegistrationPage";
 import SelectionPage from "./Pages/SelectionPage";
-import Browsing from "./Pages/Browsing"
+import HomePage from "./Pages/HomePage"
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
@@ -12,7 +12,7 @@ function App() {
 
       <Route path="/" element={<RegistrationPage />} />
       <Route path="/SelectionPage" element={<SelectionPage />} />
-      <Route path="/Browsing" element={<Browsing />} />
+      <Route path="/HomePage" element={<HomePage/>} />
 
     </Routes>
   )

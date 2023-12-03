@@ -1,15 +1,19 @@
 import Info from "../Components/Browsing/InfoSection";
-import NewsSection from "../Components/Browsing/NewsSection"
-import WeatherSection from "../Components/Browsing/WeatherSection"
-import NoteSection from "../Components/Browsing/NoteSection"
-import TimerSection from "../Components/Browsing/TimerSection"
+import NewsSection from "../Components/Browsing/NewsSection";
+import WeatherSection from "../Components/Browsing/WeatherSection";
+import NoteSection from "../Components/Browsing/NoteSection";
+import TimerSection from "../Components/Browsing/TimerSection";
 import { useNavigate } from "react-router-dom";
 import InfoSection from "../Components/Browsing/InfoSection";
+
 const Browse = () => {
   const navigate = useNavigate();
+
+  // Function to handle button click and navigate to the "/movies" route
   const handleClick = () => {
     navigate("/movies");
   };
+
   return (
     <div
       style={{
@@ -21,15 +25,26 @@ const Browse = () => {
         boxSizing: "border-box",
       }}
     >
+      {/* Main content area with flex layout */}
       <div style={{ display: "flex", gap: "20px" }}>
-      <div>
+        {/* Left section with Info and Weather components */}
+        <div>
           <InfoSection />
           <WeatherSection />
         </div>
-      <div>
-        <NewsSection/>
+
+        {/* Middle section with NoteSection component */}
+        <div>
+          <NoteSection />
+        </div>
+
+        {/* Right section with NewsSection component */}
+        <div>
+          <NewsSection />
+        </div>
       </div>
-      </div>
+
+      {/* Button to navigate to the "/movies" route */}
       <button
         style={{
           position: "absolute",

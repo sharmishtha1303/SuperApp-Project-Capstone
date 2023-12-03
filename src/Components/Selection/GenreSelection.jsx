@@ -76,7 +76,7 @@ const GenreSelection = () => {
     } else {
       setLengthError(false);
       window.localStorage.setItem("GenreSelections", JSON.stringify([...categories]));
-      navigate("/Browsing");
+      navigate("/HomePage");
     }
   };
 
