@@ -32,7 +32,7 @@ const NoteSection = () => {
       {/* Textarea to input and display notes */}
       <textarea
         style={{
-          width: "10vw",
+          width: "26vw",
           height: "50vh",
           margin: "auto",
           border: "none",

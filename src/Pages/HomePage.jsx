@@ -11,7 +11,7 @@ const Browse = () => {
 
   // Function to handle button click and navigate to the "/movies" route
   const handleClick = () => {
-    navigate("/movies");
+    navigate("/entertainmentPage");
   };
 
   return (
