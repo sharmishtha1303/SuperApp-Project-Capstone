@@ -38,19 +38,20 @@ const InfoSection = () => {
 
 const Chips = ({ color, categories }) => {
   return (
-    <div style={{ width: "20vw" }}>
-      {categories.map((category) => (
+    <div style={{ width: "22vw" }}>
+      {categories.map((category, index) => (
         <button
+          key={index}
           style={{
             background: `${color}`,
             borderRadius: "12px",
-            width: "100px",
+            width: "80px",
             color: "white",
             border: "none",
             padding: "6px",
             height: "30px",
             flexShrink: 0,
-            margin: "5px",
+            margin: "4px",
             marginLeft: "45px"
           }}
         >

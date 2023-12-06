@@ -1,4 +1,3 @@
-import Info from "../Components/Browsing/InfoSection";
 import NewsSection from "../Components/Browsing/NewsSection";
 import WeatherSection from "../Components/Browsing/WeatherSection";
 import NoteSection from "../Components/Browsing/NoteSection";

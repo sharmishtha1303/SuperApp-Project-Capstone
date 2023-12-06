@@ -69,6 +69,7 @@ const GenreSelection = () => {
   const [categories, setCategories] = useState([]);
   const [lengthError, setLengthError] = useState(false);
   const navigate = useNavigate();
+
   const handlenextButton = () => {
     if (categories.length < 3) {
       setLengthError(true);
@@ -99,10 +100,10 @@ const GenreSelection = () => {
         </div>
       </div>
       <div className={Styles.right}>
-        {GenreSelections.map((data, idx) => (
+        {GenreSelections.map((data) => (
           <Block
+            key={data.id}  // Unique key for each Block component
             data={data}
-            idx={idx}
             categories={categories}
             setCategories={setCategories}
           />
@@ -140,7 +141,6 @@ const Block = ({ data, idx, setCategories, categories }) => {
     <div
       data={data}
       onClick={(e) => handleClick(e)}
-      key={idx}
       style={{
         // Styling for the GenreSelection block including background color, border, and margin
         background: data["color"],
