@@ -7,20 +7,27 @@ const NewsSection = () => {
   // State to store current date and time
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [loading, setLoading] = useState(true);
 
   console.log(news);
 
   // Fetch news data from the News API on component mount
   useEffect(() => {
-    const fetchNews = async () => {
-      await fetch(
-        "https://newsapi.org/v2/everything?q=keyword&apiKey=a13b349faa3d41d2a24c9018ca4ecb44"
-      )
-        .then(async (data) => await data.json())
-        .then((res) => setNews(res.articles[0]));
+    const receiveNews = async () => {
+        try {
+            const response = await fetch(
+                "https://api.currentsapi.services/v1/latest-news?language=en&apiKey=295xwXV8Qxnpe972HwkIVosRTk2RlPoCUL3MkEwT2rDxmGGQ"
+            );
+            const data = await response.json();
+            setNews(data.news && data.news.length > 0 ? data.news[0] : null);
+        } catch (error) {
+            console.error("Error fetching news data:", error);
+        } finally {
+            setLoading(false);
+        }
     };
-    fetchNews();
-  }, []);
+    receiveNews();
+}, []);
 
   // Update time using useEffect
   useEffect(() => {
