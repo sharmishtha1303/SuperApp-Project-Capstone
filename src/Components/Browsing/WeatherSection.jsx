@@ -61,7 +61,7 @@ const WeatherCondition = () => {
         fontFamily: "DM Sans",
       }}
     >
-      {/*date and time */}
+      {/* Display date and time */}
       <div
         style={{
           height: "6.76vh",
@@ -88,6 +88,7 @@ const WeatherCondition = () => {
               color: "white",
               alignItems: "center",
               justifyContent: "space-evenly",
+              marginTop: "20px"
             }}
           >
             {/* Weather condition */}
