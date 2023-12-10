@@ -66,7 +66,7 @@ const TimerSection = () => {
         background: "#1E2343",
         position: "absolute",
         borderRadius: "12px",
-        marginTop: "26px",
+        marginTop: "226px",
         display: "flex",
         boxSizing: "border-box",
         padding: "12px",

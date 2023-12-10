@@ -1,84 +1,86 @@
 import { useEffect, useState } from "react";
 import pressure from "../../assets/pressure.png";
-import wind from "../../assets/Wind.png";
+import windImg from "../../assets/Wind.png";
 import humidity from "../../assets/Humidity.png";
 import divider from "../../assets/Divider.png";
 
 const WeatherCondition = () => {
+  const [weather, setWeather] = useState(null);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
-  const [weather, setWeather] = useState(false);
 
   // Fetch weather data from the API on component mount
   useEffect(() => {
     const fetchWeather = async () => {
-      await fetch(
-        "http://api.weatherapi.com/v1/current.json?key=987de39fe8924052ada80850232502&q=London&aqi=no"
-      )
-        .then(async (data) => await data.json())
-        .then((data) => setWeather(data));
+      try {
+        const apiKey = '04e4adac5abd87b85d439261a8593250';
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`
+        );
+        const data = await response.json();
+        setWeather(data);
+      } catch (error) {
+        console.error("Error fetching weather data:", error);
+      }
     };
     fetchWeather();
   }, []);
 
-  // Update time and date using useEffect
+  // Set current time in AM/PM format
   useEffect(() => {
-    const date = new Date();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
+    const currentDate = new Date();
+    let hours = currentDate.getHours();
+    let minutes = currentDate.getMinutes();
+    const ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12 || 12; // Convert 0 to 12
     minutes = minutes < 10 ? "0" + minutes : minutes;
-    var strTime = hours + ":" + minutes + " " + ampm;
-    setTime(strTime);
-  });
+    const formattedTime = hours + ":" + minutes + " " + ampm;
+    setTime(formattedTime);
+  }, []);
 
+  // Set current date in DD-MM-YYYY format
   useEffect(() => {
-    // Update date in DD-MM-YYYY format
     const today = new Date();
     const yyyy = today.getFullYear();
-    let mm = today.getMonth() + 1; // Months start at 0!
-    let dd = today.getDate();
-
-    if (dd < 10) dd = "0" + dd;
-    if (mm < 10) mm = "0" + mm;
-
-    const formattedToday = dd + "-" + mm + "-" + yyyy;
-    setDate(formattedToday);
-  });
+    let mm = String(today.getMonth() + 1).padStart(2, "0");
+    let dd = String(today.getDate()).padStart(2, "0");
+    const formattedDate = dd + "-" + mm + "-" + yyyy;
+    setDate(formattedDate);
+  }, []);
 
   return (
     <div
       style={{
-        font: "Roboto",
         width: "34vw",
-        minHeight: "22vh",
+        minHeight: "24vh",
         background: "#101744",
-        borderRadius: "12px",
-        marginTop: "30px",
+        borderRadius: "12.8px",
+        marginTop: "3vh",
+        marginaRight: "2vh",
+        position: "absolute",
+        fontFamily: "DM Sans",
       }}
     >
-      {/* Date and time display */}
+      {/*date and time */}
       <div
         style={{
-          font : "Roboto",
-          height: "7vh",
+          height: "6.76vh",
           background: "#FF4ADE",
-          borderRadius: "12px",
+          borderRadius: "12.8px 12.8px 0 0",
           color: "white",
           display: "flex",
           justifyContent: "space-evenly",
           alignItems: "center",
-          fontSize: "2rem",
+          fontSize: "1.344rem",
+          fontFamily: "roboto",
         }}
       >
         <span>{date}</span>
-        <span>{time}</span>
+        <span>{time.toUpperCase()}</span>
       </div>
-      
-      {/* Weather condition display */}
+
       <div>
+        {/* Display */}
         {weather ? (
           <div
             style={{
@@ -88,71 +90,87 @@ const WeatherCondition = () => {
               justifyContent: "space-evenly",
             }}
           >
-            <div>
-              {/* Weather icon and text */}
-              <img
-                src={weather.current.condition.icon}
-                style={{ width: "50px", height: "50px" }}
-              />
-              <p>{weather.current.condition.text}</p>
+            {/* Weather condition */}
+            <div style={{ marginTop: "-7.4px" }}>
+              {weather.weather && weather.weather[0] && (
+                <img
+                  src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+                  style={{ width: "52.48px", height: "48px", margin: "0 6.4px 0 25.6px" }}
+                  alt="Weather Condition"
+                />
+              )}
+              {weather.weather && weather.weather[0] && (
+                <p style={{ fontSize: "16px", margin: "0px 0px 0px 12.8px", marginTop: "5.2px" }}>
+                  {weather.weather[0].description}
+                </p>
+              )}
             </div>
-            {/* Divider image */}
-            <img src={divider} />
+
+            {/* Divider */}
+            <img src={divider} style={{ height: "41.6px" }} />
+
+            {/* Temperature and Pressure */}
             <div>
-              {/* Temperature display */}
-              <p
-                style={{
-                  marginBottom: "12px",
-                  fontSize: "24px",
-                }}
-              >
-                <span style={{ marginLeft: "17px" }}>{weather.current.temp_c}</span>°C
-              </p>
-              {/* Pressure icon and value */}
-              <img
-                src={pressure}
-                style={{
-                  position: "absolute",
-                  marginTop: "10px",
-                }}
-              />
-              <p style={{ marginLeft: "15px" }}>{weather.current.pressure_mb} mbar <br />pressure</p>
+              {weather.main && weather.main.temp && (
+                <p
+                  style={{
+                    marginBottom: "3.84px",
+                    fontSize: "28.8px",
+                    marginTop: "3.84px",
+                    marginLeft: "10px",
+                  }}
+                >
+                  <span>{weather.main.temp}</span>°C
+                </p>
+              )}
+              {weather.main && weather.main.pressure && (
+                <div style={{ display: "flex", alignItems: "center", fontSize: "13px" }}>
+                  <img src={pressure} style={{ height: "17.92px", width: "9.6px" }} alt="pressure" />
+                  <p style={{ marginLeft: "4.8px", marginBottom: "3.84px", marginTop: "3.84px" }}>
+                    {weather.main.pressure} mbar <br /> pressure
+                  </p>
+                </div>
+              )}
             </div>
-            {/* Divider image */}
-            <img src={divider} />
+
+            {/* Line separator */}
+            <img src={divider} style={{ height: "41.6px" }} />
+
+            {/* Section 3 - Wind and Humidity */}
             <div>
-              {/* Wind icon, speed, and Humidity icon */}
-              <img
-                src={wind}
-                style={{
-                  position: "absolute",
-                  height: "23px",
-                  marginTop: "16px",
-                  marginRight: "10px",
-                }}
-              />
-              <p
-                style={{
-                  marginBottom: "12px",
-                  marginTop: "10px",
-                  marginLeft: "35px",
-                }}
-              >
-                {weather.current.wind_kph} km/hr <br />wind
-              </p>
-              <img
-                src={humidity}
-                style={{
-                  height: "23px",
-                  position: "absolute",
-                  marginTop: "10px",
-                }}
-              />
-              <p style={{ marginLeft: "32px", marginTop: "15px" }}>{weather.current.humidity}% <br />humidity</p>
+              {weather.wind && weather.wind.speed && (
+                <div style={{ display: "flex", alignItems: "center", fontSize: "13px" }}>
+                  <img src={windImg} style={{ height: "16px", width: "16px" }} alt="windImg" />
+                  <p
+                    style={{
+                      marginBottom: "3.84px",
+                      marginTop: "3.84px",
+                      marginLeft: "4.8px",
+                    }}
+                  >
+                    {weather.wind.speed} km/h <br /> wind
+                  </p>
+                </div>
+              )}
+
+              {weather.main && weather.main.humidity && (
+                <div style={{ display: "flex", alignItems: "center", fontSize: "13px" }}>
+                  <img src={humidity} style={{ height: "17.92px", width: "11.52px" }} alt="humidity" />
+                  <p
+                    style={{
+                      marginBottom: "3.84px",
+                      marginTop: "6.4px",
+                      marginLeft: "4.8px",
+                    }}
+                  >
+                    {weather.main.humidity} % <br /> humidity
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         ) : (
-          <></>
+          <p>Loading...</p>
         )}
       </div>
     </div>

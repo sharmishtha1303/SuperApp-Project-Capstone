@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const NewsSection = () => {
   // State to store news data
   const [news, setNews] = useState("");
-  
+
   // State to store current date and time
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -14,20 +14,20 @@ const NewsSection = () => {
   // Fetch news data from the News API on component mount
   useEffect(() => {
     const receiveNews = async () => {
-        try {
-            const response = await fetch(
-                "https://api.currentsapi.services/v1/latest-news?language=en&apiKey=295xwXV8Qxnpe972HwkIVosRTk2RlPoCUL3MkEwT2rDxmGGQ"
-            );
-            const data = await response.json();
-            setNews(data.news && data.news.length > 0 ? data.news[0] : null);
-        } catch (error) {
-            console.error("Error fetching news data:", error);
-        } finally {
-            setLoading(false);
-        }
+      try {
+        const response = await fetch(
+          "https://api.currentsapi.services/v1/latest-news?language=en&apiKey=295xwXV8Qxnpe972HwkIVosRTk2RlPoCUL3MkEwT2rDxmGGQ"
+        );
+        const data = await response.json();
+        setNews(data.news && data.news.length > 0 ? data.news[0] : null);
+      } catch (error) {
+        console.error("Error fetching news data:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     receiveNews();
-}, []);
+  }, []);
 
   // Update time using useEffect
   useEffect(() => {
@@ -69,7 +69,7 @@ const NewsSection = () => {
     >
       {/* Display news image */}
       <img
-        src={news.urlToImage}
+        src={news.image}
         style={{ height: "60vh", borderRadius: "12px", width: "28vw" }}
       />
       {/* Display news description */}
